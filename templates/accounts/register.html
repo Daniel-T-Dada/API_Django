@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Create an Account{% endblock %}
+
+{% block content %}
+
+{% if not request.user.is_authenticated %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+<div class="login-container">
+    <h1 class="login-title">Create an Account</h1>
+
+    <form action="." method="POST" class="login-form">
+        {% csrf_token %}
+
+        {{ form.as_p}}
+        
+        <div class="form-actions">
+            <a href="{% url 'home' %}" class="cancel-link">← Cancel</a>
+            <button type="submit" class="form-button">Register</button>
+        </div>
+    </form>
+    <p>Already have an account? Please <a href="{% url 'login' %}">Login here</a>.</p>
+</div>
+{% else %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+<div class="logged-in-content">
+    <h1 class="login-title">Welcome Back!</h1>
+
+    <div class="user-info">
+        <p class="user-message">You are already logged in as <span class="username">{{ request.user.username }}</span>
+        </p>
+    </div>
+
+    <div class="form-actions">
+        <a href="{% url 'home' %}" class="form-button">Go to Home</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

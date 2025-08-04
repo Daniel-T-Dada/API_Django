@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{% if object %}{{ object.title }} - Article Details{% else %}Article Not Found{% endif %}
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+
+<div class="detail-container">
+    {% if object %}
+    <h1 class="detail-title">{{ object.title }}</h1>
+
+    <div class="detail-meta">
+        By <span class="detail-author">{{ object.author }}</span> &middot;
+        <span class="detail-date">{{ object.published_date|date:"F j, Y" }}</span>
+    </div>
+
+    <div class="detail-content">
+        {{ object.content|linebreaks }}
+    </div>
+
+    <div class="detail-actions">
+        <a href="{% url 'home' %}" class="detail-back-link">← Back to Home</a>
+    </div>
+    {% else %}
+    <div class="no-article">
+        <h2>Article not found</h2>
+        <p>Sorry, the article you're looking for doesn't exist.</p>
+        <a href="{% url 'home' %}" class="detail-back-link">← Back to Home</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

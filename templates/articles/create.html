@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Create New Article{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
+{% if not created %}
+<div class="create-container">
+    <h1 class="create-title">Create New Article</h1>
+
+    <form action="." method="POST" class="create-form">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+        <div class="error-message">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        {{ form.as_p }}
+
+        <!-- <div class="form-group">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="title" id="title" placeholder="Enter article title" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label for="content" class="form-label">Content</label>
+            <textarea name="content" id="content" placeholder="Write your article content here..."
+                class="form-input form-textarea" required></textarea>
+        </div> -->
+
+        <div class="form-actions">
+            <a href="{% url 'home' %}" class="cancel-link">← Cancel</a>
+            <button type="submit" class="form-button">Create Article</button>
+        </div>
+    </form>
+</div>
+{% else %}
+<div class="create-success create-container">
+    <h2>Article Created Successfully!</h2>
+    <p>Title: {{ title }}</p>
+    <p>Content: {{ content }}</p>
+
+    <a href="{% url 'article-detail' object.id %}" class="view-link">View Article</a>
+    <br>
+
+    <a href="{% url 'home' %}" class="back-link">← Back to Home</a>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home-view.css' %}">
+<div class="detail-container">
+    <h1 class="detail-title">{{ object.title }}</h1>
+
+    <div class="detail-meta">
+        By <span class="detail-author">{{ object.author }}</span> &middot;
+        <span class="detail-date">{{ object.published_date|date:"F j, Y" }}</span>
+    </div>
+
+    <div class="detail-content">
+        {{ object.content|linebreaks }}
+    </div>
+
+    <div class="detail-actions">
+        <a href="{% url 'home' %}" class="detail-back-link">← Back to Home</a>
+    </div>
+</div>
+{% endblock %}

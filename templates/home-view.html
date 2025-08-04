@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home-view.css' %}">
+
+<div class="article-container">
+    <h1 class="article-title">{{ title }}</h1>
+    <div class="article-meta">
+        By <span class="article-author">{{ name }}</span> &middot; <span>{{ published_date }}</span>
+    </div>
+    <hr class="article-divider">
+    <div class="article-content">
+        {{ content }}
+    </div>
+</div>
+
+<div class="article-list-container">
+    <h2>Article List</h2>
+    <ul>
+        {% for article in object_list %}
+        <li>
+            <a href='/articles/{{ article.id }}/'>{{ article.title }}</a><br>
+            {{ article.content|truncatewords:10 }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock content %}

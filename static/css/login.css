@@ -1,0 +1,204 @@
+.login-container {
+    max-width: 400px;
+    margin: 80px auto;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 40px;
+}
+
+.login-title {
+    margin-bottom: 30px;
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Error message styles */
+.error-message {
+    background-color: #fee;
+    color: #d32f2f;
+    padding: 12px 16px;
+    border: 1px solid #ffcdd2;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+/* Style Django's form.as_p rendered paragraphs */
+.login-form p {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style labels from Django form.as_p */
+.login-form p label {
+    margin-bottom: 8px;
+    color: #34495e;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: left;
+}
+
+/* Style input fields from Django form.as_p */
+.login-form p input[type="text"],
+.login-form p input[type="password"] {
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.login-form p input[type="text"]:focus,
+.login-form p input[type="password"]:focus {
+    outline: none;
+    border-color: #3498db;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Django form error styles */
+.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+}
+
+.errorlist li {
+    background-color: #fee;
+    color: #d32f2f;
+    padding: 8px 12px;
+    border: 1px solid #ffcdd2;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.form-button {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.form-button:hover {
+    background: linear-gradient(135deg, #2980b9, #1f5f8b);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+    text-decoration: none;
+    color: white;
+}
+
+.cancel-link {
+    color: #7f8c8d;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.cancel-link:hover {
+    color: #555;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}
+
+/* Register link styling */
+.login-container p:last-child {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.login-container p:last-child a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-container p:last-child a:hover {
+    text-decoration: underline;
+}
+
+/* Logged in state */
+.logged-in-content {
+    max-width: 400px;
+    margin: 80px auto;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+}
+
+.user-info {
+    margin-bottom: 30px;
+}
+
+.user-message {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.username {
+    font-weight: 600;
+    color: #3498db;
+}
+
+@media (max-width: 480px) {
+
+    .login-container,
+    .logged-in-content {
+        margin: 40px 20px;
+        padding: 30px 20px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-button {
+        width: 100%;
+    }
+}
+
+.logout-actions .cancel-link {
+    width: 100%;
+    text-align: center;
+}
